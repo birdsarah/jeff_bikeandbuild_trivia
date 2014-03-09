@@ -1,4 +1,22 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 {% block content %}
-<p>Hello World!</p>
+{% for trivia in object_list %}
+<div class="row">
+    <div class="col-md-6">
+        <div class="image">
+            <img src="{{ MEDIA_URL }}{{ trivia.image }}" alt="Image for {{ trivia.title }}"></img>
+            <h2 class="overimage">{{trivia.title}}</h2>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <dl>
+            <h3>{{trivia.question}}</h3>
+            <dt>Overview</dt><dd>{{trivia.overview}}</dd>
+            <dt>Insider</dt><dd>{{trivia.insider}}</dd>
+            <dt>Details</dt><dd>{{trivia.details}}</dd>
+        </dl>
+    </div>
+</div>
+{% endfor %}
 {% endblock %}

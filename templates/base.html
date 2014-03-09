@@ -13,9 +13,24 @@
         <script src="{% static "js/vendor/modernizr-2.6.2.min.js" %}"></script>
     </head>
     <body>
-
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+            <a class="navbar-brand" href="#">Jeff's Bike and Build Trivia</a>
+        </div>
+        <div class="navbar-collapse collapse navbar-form navbar-right">
+            <button type="submit" class="btn btn-success">Start playing</button>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
+    <div class="main container">
         {% block content %}
         {% endblock content %}
+        <hr>
+        <footer>
+        <p>&copy; Jeff Goodwin 2014, Site built by Sarah Bird thanks to Django and Bootstrap</p>
+        </footer>
+    </div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="{% static "js/vendor/jquery-1.10.1.min.js" %}"><\/script>')</script>
