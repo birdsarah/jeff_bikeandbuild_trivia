@@ -7,8 +7,28 @@
 @import "compass/css3/text-shadow";
 @import "bootstrap"; 
 
+body, .navbar {
+    min-width: 240px;
+}
+
+.navbar-right {
+    margin-top: .5em;
+    float: right;
+    @media (max-width: 350px) {
+        margin-top: 0;
+        margin-bottom: 1em;
+    }
+}
+
+.navbar-header:before, .navbar-header:after {
+    display: inline;
+}
+
 .main.container {
     margin-top: 5em;
+    @media (max-width: 350px) {
+        margin-top: 8em;
+    }
 }
 
 .image {
@@ -25,11 +45,16 @@
     background-color: rgba(0,0,0,0.5);
     line-height: 2;
     padding-left: .5em;
-    width: 208%;
-    $default-text-shadow-color: rgba(#56E5FF, 0.6);
+    /* shadow */
+    $default-text-shadow-color: black;
     $default-text-shadow-blur: 3px;
     $default-text-shadow-v-offset: 1px;
     @include single-text-shadow;
+    /* stretch */
+    width: 205.5%;
+    @media (max-width: $screen-md-min) {
+        width: 100%;
+    }
 }
 
 .trivia.row {
@@ -38,6 +63,9 @@
 
 .text-col {
     margin-top: 5em;
+    @media (max-width: $screen-md-min) {
+        margin-top: 1em;
+    }
 }
 
 .question {

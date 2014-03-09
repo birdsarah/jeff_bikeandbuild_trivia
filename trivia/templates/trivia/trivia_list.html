@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+
+{% block navbutton %}
+<button type="submit" class="btn btn-success">Push me!</button>
+{% endblock %}
+
 {% block content %}
 {% for trivia in object_list %}
 <div class="trivia row">
@@ -16,6 +21,9 @@
             <dt>Details</dt><dd>{{trivia.details}}</dd>
         </dl>
         <p class="question">{{trivia.trivia}}</p>
+        <div class="input-group pull-right">
+        <input type="number" class="form-control">
+        </div>
     </div>
 </div>
 {% endfor %}

@@ -19,11 +19,12 @@
         <div class="container">
             <div class="navbar-header">
             <a class="navbar-brand" href="#">Jeff's Bike and Build Trivia</a>
+            </div>
+            <div class="navbar-right">
+                {% block navbutton %}
+                {% endblock navbutton %}
+            </div>
         </div>
-        <div class="navbar-collapse collapse navbar-form navbar-right">
-            <button type="submit" class="btn btn-success">Start playing</button>
-        </div><!--/.navbar-collapse -->
-      </div>
     </div>
     <div class="main container">
         {% block content %}
