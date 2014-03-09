@@ -5,6 +5,9 @@ class Player(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
 
+    def __unicode__(self):
+        return self.name
+
 
 class Trivia(models.Model):
     title = models.CharField(max_length=50)
@@ -14,13 +17,19 @@ class Trivia(models.Model):
     details = models.TextField()
     image = models.ImageField(upload_to='trivia', null=True, blank=True)
 
+    def __unicde__(self):
+        return self.title
+
 
 class Guess(models.Model):
     value = models.FloatField()
     trivia = models.ForeignKey(Trivia)
     user = models.ForeignKey(Player)
     placed = models.BooleanField(default=False)
-    date_placed = models.DateTimeField(editable=False)
+    date_placed = models.DateTimeField(editable=False, null=True, blank=True)
 
     class Meta:
         verbose_name_plural = 'Guesses'
+
+    def __unicode__(self):
+        return ('%s %s %s') % (self.trivia, self.name, self.guess)
