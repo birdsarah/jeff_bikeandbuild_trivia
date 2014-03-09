@@ -76,6 +76,17 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'public/media/static')
 MEDIA_URL = '/media/uploads/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'public/media/uploads')
 
+# Additional places to find template:
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, "bikeandbuild/templates"),
+)
+
+# Additional places to find static
+STATICFILES_DIRS = (
+    'static',
+)
+
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
