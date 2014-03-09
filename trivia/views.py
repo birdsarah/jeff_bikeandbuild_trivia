@@ -1,3 +1,5 @@
-from django.shortcuts import render
+from django.views.generic import ListView
+from .models import Trivia
 
-# Create your views here.
+class TriviaList(ListView):
+        model = Trivia
