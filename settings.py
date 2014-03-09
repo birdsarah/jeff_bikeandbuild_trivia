@@ -76,15 +76,28 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'public/media/static')
 MEDIA_URL = '/media/uploads/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'public/media/uploads')
 
+# Additional places to find static
+STATICFILES_DIRS = (
+    'static',
+)
+
 # Additional places to find template:
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, "bikeandbuild/templates"),
 )
 
-# Additional places to find static
-STATICFILES_DIRS = (
-    'static',
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.core.context_processors.tz",
+    "django.contrib.messages.context_processors.messages",
+    # Custom
+    'trivia.context_processors.debug',
 )
+
 
 
 LOGGING = {

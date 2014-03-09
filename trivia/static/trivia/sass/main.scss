@@ -4,8 +4,42 @@
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
 @import "compass/reset";
+@import "compass/css3/text-shadow";
 @import "bootstrap"; 
 
 .main.container {
     margin-top: 5em;
+}
+
+.image {
+    position: relative;
+}
+
+.overimage {
+    position: absolute;
+    margin-top: 0;
+    top: 0;
+    left: 0;
+    color: white;
+    background-color: black;
+    background-color: rgba(0,0,0,0.5);
+    line-height: 2;
+    padding-left: .5em;
+    width: 208%;
+    $default-text-shadow-color: rgba(#56E5FF, 0.6);
+    $default-text-shadow-blur: 3px;
+    $default-text-shadow-v-offset: 1px;
+    @include single-text-shadow;
+}
+
+.trivia.row {
+    margin-bottom: 2em;
+}
+
+.text-col {
+    margin-top: 5em;
+}
+
+.question {
+    font-weight: bold;
 }
