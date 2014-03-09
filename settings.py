@@ -15,7 +15,7 @@ ALLOWED_HOSTS = ['jeff.bonvaya.com']
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': private_settings.DATABASE_NAME,                      
+        'NAME': private_settings.DATABASE_NAME,
         'USER': private_settings.DATABASE_USER,
         'PASSWORD': private_settings.DATABASE_PASSWORD,
         'HOST': private_settings.DATABASE_HOST,
@@ -34,6 +34,12 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Tools
+    'south',
+
+    # Apps
+    'trivia',
 )
 
 MIDDLEWARE_CLASSES = (
