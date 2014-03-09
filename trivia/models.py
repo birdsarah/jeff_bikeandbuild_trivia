@@ -12,6 +12,7 @@ class Trivia(models.Model):
     overview = models.TextField()
     insider = models.TextField(verbose_name='Insider Knowledge')
     details = models.TextField()
+    image = models.ImageField(upload_to='trivia', null=True, blank=True)
 
 
 class Guess(models.Model):
