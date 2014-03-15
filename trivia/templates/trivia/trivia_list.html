@@ -1,11 +1,15 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% load guesses %}
+
 
 {% block navbutton %}
-<button type="submit" class="btn btn-success">Push me!</button>
+<a href="{% url 'send' %}" class="btn btn-success">Send Jeff my guesses...</a>
 {% endblock %}
 
 {% block content %}
+
+<form role="form" action="." method="post">{% csrf_token %}
 {% for trivia in object_list %}
 <div class="trivia row">
     <div class="col-md-6 image-col">
@@ -22,9 +26,13 @@
         </dl>
         <p class="question">{{trivia.trivia}}</p>
         <div class="input-group pull-right">
-        <input type="number" class="form-control">
+            <input name="trivia-{{ trivia.id }}" value="{{ trivia|get_guess:request.session }}" type="number" class="form-control">
+            <span class="input-group-btn">
+                <button type="submit" class="btn btn-success">Save</button>
+            </span>
         </div>
     </div>
 </div>
 {% endfor %}
+</form>
 {% endblock %}

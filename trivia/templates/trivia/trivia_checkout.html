@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load guesses %}
+
+{% block content %}
+<form role="form" class="form" action="." method="post">{% csrf_token %}
+    <div class="form-group clearfix">
+        <div class="col-xs-4"><input class="form-control" name="name" value="Name"></div>
+        <div class="col-xs-4"><input class="form-control" name="email" value="Email"></div>
+    </div>
+        {% for trivia in object_list %}
+        <div class="form-group clearfix">
+            <div class="col-xs-12">
+            <label class="control-label" for="trivia-{{ trivia.id }}">{{trivia.trivia}}</label>
+            </div>
+            <div class="col-xs-2">
+            <input class="form-control" name="trivia-{{ trivia.id }}" value="{{ trivia|get_guess:request.session }}" type="number">
+            </div>
+        </div>
+        {% endfor %}
+    <p>Thank you for your {{ number_of_guesses }} guesses. To enter the draw to win Jeff's hand-crafted prizes, 
+    please make a donation of $10 for each of the bets to Jeff's Bike and Build campaign. You have
+    made {{ number_of_guesses }} so your suggested donation to bike and build is {{ suggested_donation }}.</p>
+    <input type="submit" class="btn btn-success" value="Save my bets and go to bikeandbuild.com to make my donation."/>
+</form>
+<div class="clearfix"></div>
+<br />
+<br />
+<br />
+<br />
+{% endblock %}
