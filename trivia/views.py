@@ -86,13 +86,25 @@ class TriviaCheckout(ListView, FormView):
         msg.send()
 
     def form_valid(self, form):
-        # Save the user
         player, created = \
             Player.objects.get_or_create(email=form.cleaned_data['email'])
         player.name = form.cleaned_data['name']
         player.save()
-        # Save the guesses
         guesses = self._save_guesses(player)
-        # Email the guesses to jeff & user
         self._send_email(player, guesses)
+        # Clear the session to prevent confusion
+        self.session.clear()
         return super(TriviaCheckout, self).form_valid(form)
+
+    def post(self, request, *args, **kwargs):
+        if len(request.session.items()) == 0:
+            form_class = self.get_form_class()
+            form = self.get_form(form_class)
+            message = """You have no guesses, so I can't send them.
+            (If you already pressed the send button, check your email for your
+            saved guesses)"""
+            messages.add_message(request, messages.WARNING, message)
+            return super(TriviaCheckout, self).form_invalid(form)
+        else:
+            self.session = request.session
+            return super(TriviaCheckout, self).post(request, *args, **kwargs)
