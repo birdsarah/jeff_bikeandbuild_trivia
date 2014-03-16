@@ -1,15 +1,16 @@
-Dear {{ name }},
+<p>Dear {{ name }},</p>
 
-Thank you for supporting me on my trip.
-You made the following guesses:
+<p>Thank you for supporting me on my trip.</p>
+<p>You made the following guesses:
 <ul>
 {% for guess in guesses %}
 <li>{{ guess.trivia.title }} - {{ guess.value }}</li>
 {% endfor %}
 </ul>
-If you haven't already done it, please go to <a href="http://www.bikeandbuild.org/cms/component/option,com_wrapper/Itemid,118/?item_name_1=7212">
-my donation page</a> and make a donation of ${{ suggested_donation|default:"xxx" }}.
+</p>
+<p>If you haven't already done it, please go to <a href="http://www.bikeandbuild.org/cms/component/option,com_wrapper/Itemid,118/?item_name_1=7212">
+my donation page</a> and make a donation of ${{ suggested_donation|default:"xxx" }}.</p>
 
-Any problems, concerns, whatever. Email me on <a href="mailto:jeffreyhgoodwin@gmail.com">jeffreyhgoodwin@gmail.com</a>
+<p>Any problems, concerns, whatever. Email me on <a href="mailto:jeffreyhgoodwin@gmail.com">jeffreyhgoodwin@gmail.com</a></p>
 
-- Jeff
+<p>- Jeff</p>

@@ -1,7 +1,7 @@
 from datetime import datetime
 from django.forms import Form, CharField, EmailField
 from django.contrib import messages
-from django.core.mail import send_mail
+from django.core.mail import EmailMultiAlternatives
 from django.template import Context
 from django.template.loader import get_template
 from django.views.generic import ListView
@@ -71,17 +71,19 @@ class TriviaCheckout(ListView, FormView):
         return guesses
 
     def _send_email(self, player, guesses):
-        send_mail(
-            'Thanks for supporting me. Good luck!',
-            get_template('trivia/email.html').render(
-                Context({
-                    'name': player.name,
-                    'guesses': guesses,
-                    'suggested_donation': self.suggested_donation,
-                })
-            ),
-            'jeffreyhgoodwin@gmail.com',
-            ['jeffreyhgoodwin@gmail.com', player.email])
+        context = Context({
+            'name': player.name,
+            'guesses': guesses,
+            'suggested_donation': self.suggested_donation
+        })
+        subject = 'Thanks for supporting me. Good luck!'
+        from_email = 'jeffreyhgoodwin@gmail.com'
+        to = ['jeffreyhgoodwin@gmail.com', player.email]
+        text_content = get_template('trivia/email.txt').render(context)
+        html_content = get_template('trivia/email.html').render(context)
+        msg = EmailMultiAlternatives(subject, text_content, from_email, to)
+        msg.attach_alternative(html_content, "text/html")
+        msg.send()
 
     def form_valid(self, form):
         # Save the user

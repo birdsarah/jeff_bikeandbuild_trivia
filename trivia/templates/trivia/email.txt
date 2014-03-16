@@ -1,0 +1,13 @@
+Dear {{ name }},
+
+Thank you for supporting me on my trip.
+You made the following guesses:
+{% for guess in guesses %}
+{{ guess.trivia.title }} - {{ guess.value }}
+{% endfor %}
+If you haven't already done it, please go to http://www.bikeandbuild.org/cms/component/option,com_wrapper/Itemid,118/?item_name_1=7212 
+and make a donation of ${{ suggested_donation|default:"xxx" }}.
+
+Any problems, concerns, whatever. Email me on jeffreyhgoodwin@gmail.com
+
+- Jeff
