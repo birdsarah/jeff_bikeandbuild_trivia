@@ -1,26 +1,41 @@
 {% extends "base.html" %}
 {% load guesses %}
 
+{% block navbutton %}
+<a href="{% url 'home' %}" class="btn btn-default">Back to trivia</a>
+{% endblock %}
+
 {% block content %}
-<form role="form" class="form" action="." method="post">{% csrf_token %}
+<h3>Your guesses.</h3> 
+{% for trivia in object_list %}
+{% if trivia|get_guess:request.session %}
+    <p>{{trivia.trivia}} <strong>{{ trivia|get_guess:request.session }}</strong></p>
+{% endif %}
+{% endfor %}
+<h3>Donate and send</h3>
+<p>To enter the draw to win Jeff's hand-crafted prizes, please make a 
+    donation of $10 for each of the guesses to Jeff's <a href="http://bikeandbuild.org/rider/7212">Bike & Build</a></p 
+<p>You have made {{ number_of_guesses|default:"xxx" }} guesses, so your suggested 
+    donation to <a href="http://bikeandbuild.org/rider/7212">Bike & Build</a> is <b>${{ suggested_donation|default:"xxx" }}</b>.</p>
+<p>After pressing send, you will be taken to Jeff's Bike & Build donate page where you can make your 
+donation, please remember the amount (${{ suggested_donation|default:"xxx"}}) as it won't be automatically filled. 
+You should receive an email confirmation with your guesses in it, if you don't please email 
+    <a href="mailto:jeffreyhgoodwin@gmail.com">jeffreyhgoodwin@gmail.com</a></p>
+<br />
+<form role="form" class="form" action="" method="post">{% csrf_token %}
     <div class="form-group clearfix">
-        <div class="col-xs-4"><input class="form-control" name="name" value="Name"></div>
-        <div class="col-xs-4"><input class="form-control" name="email" value="Email"></div>
-    </div>
-        {% for trivia in object_list %}
-        <div class="form-group clearfix">
-            <div class="col-xs-12">
-            <label class="control-label" for="trivia-{{ trivia.id }}">{{trivia.trivia}}</label>
-            </div>
-            <div class="col-xs-2">
-            <input class="form-control" name="trivia-{{ trivia.id }}" value="{{ trivia|get_guess:request.session }}" type="number">
-            </div>
+        <div class="col-xs-4{% if form.name.errors %} has-error{% endif %}">
+            <input class="form-control" name="name" placeholder="Name (required)" value="{{ form.name.value }}">
+            {% if form.name.errors %}<span class="help-inline text-danger">{{ form.name.errors.as_text }}</span>{% endif %}
         </div>
-        {% endfor %}
-    <p>Thank you for your {{ number_of_guesses }} guesses. To enter the draw to win Jeff's hand-crafted prizes, 
-    please make a donation of $10 for each of the bets to Jeff's Bike and Build campaign. You have
-    made {{ number_of_guesses }} so your suggested donation to bike and build is {{ suggested_donation }}.</p>
-    <input type="submit" class="btn btn-success" value="Save my bets and go to bikeandbuild.com to make my donation."/>
+        <div class="col-xs-4{% if form.email.errors %} has-error{% endif %}">
+            <input class="form-control" type="email" name="email" placeholder="Email (required)" value={{ form.email.value }}>
+            {% if form.email.errors %}<span class="help-inline text-danger">{{ form.email.errors.as_text }}</span>{% endif %}
+        </div>
+    </div>    
+    <div class="col-xs-12">
+        <input type="submit" class="btn btn-success" value="Make my donation & send my guesses to Jeff."/>
+    </div>
 </form>
 <div class="clearfix"></div>
 <br />
