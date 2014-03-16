@@ -10,6 +10,13 @@ TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = ['jeff.bonvaya.com']
 
+ADMINS = (
+    ('Sarah Bird', 'sarah@bonvaya.com'),
+    ('Jeffrey Goodwin', 'jeffreyhgoodwin@gmail.com'),
+)
+
+MANAGERS = ADMINS
+
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 DATABASES = {
@@ -136,3 +143,17 @@ logging.basicConfig(
     filename = os.path.join(BASE_DIR, 'logs/app.log'),
     filemode = 'a'
 )
+
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    try:
+        EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+        EMAIL_HOST = 'smtp.sendgrid.net'
+        EMAIL_HOST_PASSWORD = private_settings.SENDGRID_PASSWORD
+        EMAIL_HOST_USER = private_settings.SENDGRID_USERNAME
+        EMAIL_PORT = 587
+        SERVER_EMAIL = 'sarah@bonvaya.com'
+        EMAIL_USE_TLS = True
+    except Exception as e:
+        EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

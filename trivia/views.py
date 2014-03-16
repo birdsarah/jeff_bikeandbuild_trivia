@@ -1,6 +1,9 @@
 from datetime import datetime
+from django.forms import Form, CharField, EmailField
 from django.contrib import messages
-from django import forms
+from django.core.mail import send_mail
+from django.template import Context
+from django.template.loader import get_template
 from django.views.generic import ListView
 from django.views.generic.edit import FormView
 from models import Trivia, Player, Guess
@@ -24,9 +27,9 @@ class TriviaList(ListView):
         return super(TriviaList, self).get(request, *args, **kwargs)
 
 
-class TriviaCheckoutForm(forms.Form):
-    name = forms.CharField(max_length=100)
-    email = forms.EmailField()
+class TriviaCheckoutForm(Form):
+    name = CharField(max_length=100)
+    email = EmailField()
 
 
 class TriviaCheckout(ListView, FormView):
@@ -39,15 +42,15 @@ class TriviaCheckout(ListView, FormView):
         # Needed if form is invalid
         self.object_list = self.get_queryset()
         self.session_keys = request.session.items()
+        self.number_of_guesses = len(self.session_keys)
+        self.suggested_donation = self.number_of_guesses * 10
         return super(TriviaCheckout, self).dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super(TriviaCheckout, self).get_context_data(**kwargs)
-        number_of_guesses = len(self.session_keys)
-        suggested_donation = number_of_guesses * 10
         context.update({
-            'number_of_guesses': number_of_guesses,
-            'suggested_donation': suggested_donation,
+            'number_of_guesses': self.number_of_guesses,
+            'suggested_donation': self.suggested_donation,
         })
         return context
 
@@ -67,6 +70,19 @@ class TriviaCheckout(ListView, FormView):
                 guesses.append(guess)
         return guesses
 
+    def _send_email(self, player, guesses):
+        send_mail(
+            'Thanks for supporting me. Good luck!',
+            get_template('trivia/email.html').render(
+                Context({
+                    'name': player.name,
+                    'guesses': guesses,
+                    'suggested_donation': self.suggested_donation,
+                })
+            ),
+            'jeffreyhgoodwin@gmail.com',
+            ['jeffreyhgoodwin@gmail.com', player.email])
+
     def form_valid(self, form):
         # Save the user
         player, created = \
@@ -76,5 +92,5 @@ class TriviaCheckout(ListView, FormView):
         # Save the guesses
         guesses = self._save_guesses(player)
         # Email the guesses to jeff & user
-        #self._send_email(player, guesses)
+        self._send_email(player, guesses)
         return super(TriviaCheckout, self).form_valid(form)
