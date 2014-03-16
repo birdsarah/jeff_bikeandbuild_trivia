@@ -7,16 +7,25 @@ class TriviaAdmin(admin.ModelAdmin):
                     'trivia')
 
 
+class PlayerGuessesInline(admin.TabularInline):
+    model = Guess
+    extra = 0
+    readonly_fields = ('date_placed',)
+
+
 class PlayerAdmin(admin.ModelAdmin):
     list_display = ('name',
                     'email')
+    inlines = [
+        PlayerGuessesInline,
+    ]
 
 
 class GuessAdmin(admin.ModelAdmin):
     list_display = ('trivia',
-                    'name',
-                    'guess')
+                    'user',
+                    'value')
 
-admin.site.register(Player)
+admin.site.register(Player, PlayerAdmin)
 admin.site.register(Trivia, TriviaAdmin)
-admin.site.register(Guess)
+admin.site.register(Guess, GuessAdmin)

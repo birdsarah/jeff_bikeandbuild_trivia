@@ -17,7 +17,7 @@ class Trivia(models.Model):
     details = models.TextField()
     image = models.ImageField(upload_to='trivia', null=True, blank=True)
 
-    def __unicde__(self):
+    def __unicode__(self):
         return self.title
 
 
@@ -32,4 +32,4 @@ class Guess(models.Model):
         verbose_name_plural = 'Guesses'
 
     def __unicode__(self):
-        return ('%s %s %s') % (self.trivia, self.name, self.guess)
+        return ('%s %s %s') % (self.trivia, self.user, self.value)

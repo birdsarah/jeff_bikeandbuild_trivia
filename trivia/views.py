@@ -1,8 +1,9 @@
+from datetime import datetime
 from django.contrib import messages
 from django import forms
 from django.views.generic import ListView
 from django.views.generic.edit import FormView
-from models import Trivia
+from models import Trivia, Player, Guess
 
 
 class TriviaList(ListView):
@@ -17,7 +18,9 @@ class TriviaList(ListView):
             if value:
                 request.session[key] = value
         number_of_guesses = len(request.session.items())
-        messages.add_message(request, messages.SUCCESS, str(number_of_guesses) + ' guesses saved')
+        messages.add_message(request,
+                             messages.SUCCESS,
+                             str(number_of_guesses) + ' guesses saved')
         return super(TriviaList, self).get(request, *args, **kwargs)
 
 
@@ -30,10 +33,11 @@ class TriviaCheckout(ListView, FormView):
     model = Trivia
     template_name = 'trivia/trivia_checkout.html'
     form_class = TriviaCheckoutForm
-    success_url = 'http://www.bikeandbuild.org/cms/component/option,\
-        com_wrapper/Itemid,118/?item_name_1=7212'
+    success_url = 'http://www.bikeandbuild.org/cms/component/option,com_wrapper/Itemid,118/?item_name_1=7212'  # nopep8
 
     def dispatch(self, request, *args, **kwargs):
+        # Needed if form is invalid
+        self.object_list = self.get_queryset()
         self.session_keys = request.session.items()
         return super(TriviaCheckout, self).dispatch(request, *args, **kwargs)
 
@@ -47,7 +51,30 @@ class TriviaCheckout(ListView, FormView):
         })
         return context
 
-    def post(self, request, *args, **kwargs):
-        # Needed if form is invalid
-        self.object_list = self.get_queryset()
-        return super(TriviaCheckout, self).post(request, *args, **kwargs)
+    def _save_guesses(self, player):
+        guesses = []
+        for key, value in self.session_keys:
+            trivia_id = None
+            splits = key.split('-')
+            if splits[0] == 'trivia':
+                trivia_id = splits[1]
+            if trivia_id:
+                trivia = Trivia.objects.get(pk=int(trivia_id))
+                guess = Guess.objects.create(value=value,
+                                             trivia=trivia,
+                                             user=player,
+                                             date_placed=datetime.now())
+                guesses.append(guess)
+        return guesses
+
+    def form_valid(self, form):
+        # Save the user
+        player, created = \
+            Player.objects.get_or_create(email=form.cleaned_data['email'])
+        player.name = form.cleaned_data['name']
+        player.save()
+        # Save the guesses
+        guesses = self._save_guesses(player)
+        # Email the guesses to jeff & user
+        #self._send_email(player, guesses)
+        return super(TriviaCheckout, self).form_valid(form)
