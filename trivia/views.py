@@ -26,6 +26,11 @@ class TriviaList(ListView):
                              str(number_of_guesses) + ' guesses saved')
         return super(TriviaList, self).get(request, *args, **kwargs)
 
+    def get_context_data(self):
+        context = super(TriviaList, self).get_context_data()
+        context.update({'count': len(self.request.session.items())})
+        return context
+
 
 class TriviaCheckoutForm(Form):
     name = CharField(max_length=100)
