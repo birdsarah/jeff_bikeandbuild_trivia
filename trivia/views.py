@@ -1,5 +1,5 @@
 from datetime import datetime
-from django.forms import Form, CharField, EmailField
+from django.forms import Form, CharField, EmailField, BooleanField
 from django.contrib import messages
 from django.core.mail import EmailMultiAlternatives
 from django.template import Context
@@ -11,6 +11,10 @@ from models import Trivia, Player, Guess
 
 class TriviaList(ListView):
     model = Trivia
+
+    def get(self, request, *args, **kwargs):
+        self.request.session.clear()
+        return super(TriviaList, self).get(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
         guesses = request.POST.copy()
@@ -35,6 +39,7 @@ class TriviaList(ListView):
 class TriviaCheckoutForm(Form):
     name = CharField(max_length=100)
     email = EmailField()
+    add_to_list = BooleanField(required=False)
 
 
 class TriviaCheckout(ListView, FormView):
@@ -49,6 +54,7 @@ class TriviaCheckout(ListView, FormView):
         self.session_keys = request.session.items()
         self.number_of_guesses = len(self.session_keys)
         self.suggested_donation = self.number_of_guesses * 10
+        self.add_to_list = True
         return super(TriviaCheckout, self).dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
@@ -56,6 +62,7 @@ class TriviaCheckout(ListView, FormView):
         context.update({
             'number_of_guesses': self.number_of_guesses,
             'suggested_donation': self.suggested_donation,
+            'add_to_list': self.add_to_list,
         })
         return context
 
@@ -94,6 +101,9 @@ class TriviaCheckout(ListView, FormView):
         player, created = \
             Player.objects.get_or_create(email=form.cleaned_data['email'])
         player.name = form.cleaned_data['name']
+        print form.cleaned_data
+        if 'add_to_list' not in form.cleaned_data:
+            player.add_to_list = False
         player.save()
         guesses = self._save_guesses(player)
         self._send_email(player, guesses)
@@ -102,6 +112,7 @@ class TriviaCheckout(ListView, FormView):
         return super(TriviaCheckout, self).form_valid(form)
 
     def post(self, request, *args, **kwargs):
+        self.add_to_list = request.POST.get('add_to_list')
         if len(request.session.items()) == 0:
             form_class = self.get_form_class()
             form = self.get_form(form_class)

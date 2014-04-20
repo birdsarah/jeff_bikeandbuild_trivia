@@ -4,6 +4,7 @@ from django.db import models
 class Player(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
+    add_to_list = models.BooleanField(default=True)
 
     def __unicode__(self):
         return self.name
