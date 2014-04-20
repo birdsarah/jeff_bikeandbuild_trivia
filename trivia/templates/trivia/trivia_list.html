@@ -33,6 +33,7 @@
 
 <form role="form" action="." method="post">{% csrf_token %}
 {% for trivia in object_list %}
+<span id="{{ trivia.id }}"></span>
 <div class="trivia row">
     <div class="col-md-6 image-col">
         <div class="image">
@@ -46,9 +47,9 @@
             <dt>Insider Knowledge</dt><dd>{{trivia.insider}}</dd>
             <dt>Details</dt><dd>{{trivia.details}}</dd>
         </dl>
-        <p class="question">{{trivia.trivia}}</p>
+        <p class="question">{{trivia.trivia}} ({{ trivia.unit }})</p>
         <div class="input-group pull-right">
-            <input name="trivia-{{ trivia.id }}" value="{{ trivia|get_guess:request.session }}" type="number" class="form-control" pattern="[0-9]+([,\.][0-9]+)?" title="Please enter a number" placeholder="Enter a number">
+            <input name="trivia-{{ trivia.id }}" value="{{ trivia|get_guess:request.session }}" type="number" class="form-control" pattern="[0-9]+([,\.][0-9]+)?" title="Please enter a number of {{ trivia.unit }}" placeholder="Enter a number of {{ trivia.unit }}.">
             <span class="input-group-btn">
                 <button type="submit" class="btn btn-success">Save</button>
             </span>
