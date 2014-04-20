@@ -47,6 +47,7 @@ INSTALLED_APPS = (
 
     # Apps
     'trivia',
+    'pages',
 )
 
 MIDDLEWARE_CLASSES = (

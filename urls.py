@@ -7,6 +7,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^', include('trivia.urls')),
+    url(r'^p/', include('pages.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
 )
