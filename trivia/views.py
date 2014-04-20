@@ -6,7 +6,24 @@ from django.template import Context
 from django.template.loader import get_template
 from django.views.generic import ListView
 from django.views.generic.edit import FormView
-from models import Trivia, Player, Guess
+from extra_views import (
+    NamedFormsetsMixin,
+    UpdateWithInlinesView,
+    InlineFormSet,
+)
+from .models import Trivia, Player, Guess
+
+
+class GuessInline(InlineFormSet):
+    model = Guess
+    extra = 1
+
+
+class AddGuesses(NamedFormsetsMixin, UpdateWithInlinesView):
+    template_name = 'trivia/trivia_detail.html'
+    model = Trivia
+    inlines = [GuessInline]
+    inlines_names = ['guesses']
 
 
 class TriviaList(ListView):

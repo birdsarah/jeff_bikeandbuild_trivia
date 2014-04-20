@@ -2,3 +2,6 @@ mysql-python
 django
 south
 pillow
+six
+django-extra-views
+factory-boy

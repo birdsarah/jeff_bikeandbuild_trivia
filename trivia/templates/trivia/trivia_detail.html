@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load guesses %}
+
+
+{% block navbutton %}
+<a href="{% url 'send' %}" class="btn btn-success">send jeff my guesses...</a>
+{% endblock %}
+
+{% block content %}
+
+<form role="form" action="." method="post">{% csrf_token %}
+<div class="trivia row">
+    <div class="col-md-6 image-col">
+        <div class="image">
+            <img class="img-responsive" src="{{ media_url }}{{ trivia.image }}" alt="image for {{ trivia.title }}"></img>
+            <h2 class="overimage">{{trivia.title}}</h2>
+        </div>
+    </div>
+    <div class="col-md-6 text-col">
+        <dl>
+            <dt>overview</dt><dd>{{trivia.overview}}</dd>
+            <dt>insider</dt><dd>{{trivia.insider}}</dd>
+            <dt>details</dt><dd>{{trivia.details}}</dd>
+        </dl>
+        <p class="question">{{trivia.trivia}}</p>
+        {{ guesses.management_form }}
+        {% for guess in guesses.forms %}
+        <div class="input-group pull-right">
+            <input name="trivia-{{ trivia.id }}" value="{{ trivia|get_guess:request.session }}" type="number" class="form-control" pattern="[0-9]+([,\.][0-9]+)?" title="please enter a number" placeholder="enter a number">
+            <span class="input-group-btn">
+                <button type="submit" class="btn btn-success">save</button>
+            </span>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+</form>
+{% endblock %}
+
