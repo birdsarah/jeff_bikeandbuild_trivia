@@ -12,6 +12,7 @@ class Player(models.Model):
 class Trivia(models.Model):
     title = models.CharField(max_length=50)
     trivia = models.CharField(max_length=256)
+    unit = models.CharField(max_length=30)
     overview = models.TextField()
     insider = models.TextField(verbose_name='Insider Knowledge')
     details = models.TextField()
