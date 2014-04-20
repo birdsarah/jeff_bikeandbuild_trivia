@@ -6,12 +6,27 @@
 {% endblock %}
 
 {% block content %}
-<h3>Your guesses.</h3> 
-{% for trivia in object_list %}
-{% if trivia|get_guess:request.session %}
-    <p>{{trivia.trivia}} <strong>{{ trivia|get_guess:request.session }}</strong></p>
-{% endif %}
-{% endfor %}
+<h3>Your guesses</h3> 
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Trivia</th>
+            <th>Your guess</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for trivia in object_list %}
+        {% if trivia|get_guess:request.session %}
+        <tr>
+            <td>{{trivia.trivia}}</td>
+            <td>{{ trivia|get_guess:request.session }}</td>
+            <td><a class="btn btn-primary" href="{% url 'home' %}#{{ trivia.id }}">edit</a></td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+    </tbody>
+</table>
 <h3>Donate and send</h3>
 <p>To enter the draw to win Jeff's hand-crafted prizes, please make a 
     donation of $10 for each of the guesses to Jeff's <a href="http://bikeandbuild.org/rider/7212">Bike & Build</a></p 

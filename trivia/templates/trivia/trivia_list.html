@@ -11,6 +11,7 @@
 
 <form role="form" action="." method="post">{% csrf_token %}
 {% for trivia in object_list %}
+<span id="{{ trivia.id }}"></span>
 <div class="trivia row">
     <div class="col-md-6 image-col">
         <div class="image">
