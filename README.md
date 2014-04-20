@@ -11,3 +11,12 @@ To deploy to dreamhost:
  * touch tmp/restart.txt
 
 DO NOT FORGET THE RESTART!!
+
+
+To setup:
+ * virtualenv
+ * pip install -r requirements.txt
+ * gem install bootstrap-sass
+ * add private-settings.py
+ * setup db
+
