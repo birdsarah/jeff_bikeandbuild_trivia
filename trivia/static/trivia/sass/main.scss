@@ -3,7 +3,6 @@
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
-@import "compass/reset";
 @import "compass/css3/text-shadow";
 @import "bootstrap"; 
 
@@ -43,7 +42,7 @@ body, .navbar {
     color: white;
     background-color: black;
     background-color: rgba(0,0,0,0.5);
-    line-height: 2;
+    line-height: 1.4;
     padding-left: .5em;
     /* shadow */
     $default-text-shadow-color: black;

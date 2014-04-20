@@ -4,10 +4,32 @@
 
 
 {% block navbutton %}
-<a href="{% url 'send' %}" class="btn btn-success">Send Jeff my guesses...</a>
+<a href="{% url 'send' %}" class="btn btn-success">Submit My Guesses</a>
 {% endblock %}
 
 {% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h2>Introduction</h2>
+        <p>To make a long story short, Jeff Goodwin is about to bike across the country 
+        this summer with an awesome organization called Bike & Build. 
+        Bike & Build trips are dedicated to raising money and awareness 
+        for afford able housing, a cause Jeff cares deeply about. 
+        Jeff will be raising money as part of this process to support 
+        affordable housing organizations around the US. 
+        This trivia challenge is a way to contribute t
+        o a great cause and have some fun in the process.</p>
+        <h4>How it works:</h4> 
+        <ul>
+            <li>Read through the trivia questions below</li>
+            <li>Enter your guesses and click save &#40;each guess requires a $10 donation&#41;</li>
+            <li>Guess some more, it&rsquo;s a great cause afterall</li>
+            <li>Submit your guesses and make the approapriate donation directly on Bike &amp; Build&rsquo;s website</li>
+            <li>If your guess is the closest you&rsquo;ll be rewarded with a sweet thank you gift</li>
+        </ul>    
+    </div>
+</div>
+
 
 <form role="form" action="." method="post">{% csrf_token %}
 {% for trivia in object_list %}
@@ -21,7 +43,7 @@
     <div class="col-md-6 text-col">
         <dl>
             <dt>Overview</dt><dd>{{trivia.overview}}</dd>
-            <dt>Insider</dt><dd>{{trivia.insider}}</dd>
+            <dt>Insider Knowledge</dt><dd>{{trivia.insider}}</dd>
             <dt>Details</dt><dd>{{trivia.details}}</dd>
         </dl>
         <p class="question">{{trivia.trivia}}</p>
