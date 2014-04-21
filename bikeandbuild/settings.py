@@ -146,10 +146,7 @@ LOGGING = {
     }
 }
 
-import logging
-logger = logging.getLogger('testlogger')
-logger.info(DEBUG)
-if DEBUG:
+if DEBUG == True:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 else:
     try:
@@ -161,7 +158,4 @@ else:
         SERVER_EMAIL = 'sarah@bonvaya.com'
         EMAIL_USE_TLS = True
     except Exception as e:
-        import logging
-        logger = logging.getLogger('testlogger')
-        logger.info(e)
         EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
