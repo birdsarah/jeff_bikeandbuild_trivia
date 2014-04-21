@@ -1,10 +1,9 @@
 import os
 import logging
-import private_settings
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-DEBUG = private_settings.DEBUG
+DEBUG = os.environ['DEBUG']
 
 TEMPLATE_DEBUG = DEBUG
 
@@ -19,21 +18,21 @@ MANAGERS = ADMINS
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-if os.environ.has_key('DATABASE_URL'):
-    DATABASES['default'] =  dj_database_url.config()
+if 'DATABASE_URL' in os.environ:
+    DATABASES['default'] = dj_database_url.config()
 else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': private_settings.DATABASE_NAME,
-            'USER': private_settings.DATABASE_USER,
-            'PASSWORD': private_settings.DATABASE_PASSWORD,
-            'HOST': private_settings.DATABASE_HOST,
+            'NAME': os.environ['DATABASE_NAME'],
+            'USER': os.environ['DATABASE_USER'],
+            'PASSWORD': os.environ['DATABASE_PASSWORD'],
+            'HOST': os.environ['DATABASE_HOST'],
             'PORT': '',
         }
     }
 
-SECRET_KEY = private_settings.SECRET_KEY
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # Application definition
 
@@ -154,8 +153,8 @@ else:
     try:
         EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
         EMAIL_HOST = 'smtp.sendgrid.net'
-        EMAIL_HOST_PASSWORD = private_settings.SENDGRID_PASSWORD
-        EMAIL_HOST_USER = private_settings.SENDGRID_USERNAME
+        EMAIL_HOST_PASSWORD = os.environ['SENDGRID_PASSWORD']
+        EMAIL_HOST_USER = os.environ['SENDGRID_USERNAME']
         EMAIL_PORT = 587
         SERVER_EMAIL = 'sarah@bonvaya.com'
         EMAIL_USE_TLS = True
