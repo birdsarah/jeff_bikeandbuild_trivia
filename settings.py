@@ -93,6 +93,10 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
+MEDIA_URL = '/media/uploads/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/uploads')
+
+
 # Additional places to find template:
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, "bikeandbuild/templates"),
