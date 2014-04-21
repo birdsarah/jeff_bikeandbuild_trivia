@@ -141,14 +141,6 @@ LOGGING = {
     }
 }
 
-# configure logging
-logging.basicConfig(
-    level = logging.DEBUG,
-    format = '%(asctime)s %(levelname)s %(message)s',
-    filename = os.path.join(BASE_DIR, 'logs/app.log'),
-    filemode = 'a'
-)
-
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 else:
