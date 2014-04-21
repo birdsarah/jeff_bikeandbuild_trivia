@@ -146,6 +146,9 @@ LOGGING = {
     }
 }
 
+import logging
+logger = logging.getLogger('testlogger')
+logger.info(DEBUG)
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 else:
