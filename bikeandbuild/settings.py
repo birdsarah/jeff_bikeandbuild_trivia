@@ -149,7 +149,7 @@ LOGGING = {
     }
 }
 
-if DEBUG == True:
+if DEBUG is True:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 else:
     try:
@@ -158,7 +158,7 @@ else:
         EMAIL_HOST_PASSWORD = os.environ['SENDGRID_PASSWORD']
         EMAIL_HOST_USER = os.environ['SENDGRID_USERNAME']
         EMAIL_PORT = 587
-        SERVER_EMAIL = 'sarah@bonvaya.com'
+        SERVER_EMAIL = 'jeffreyhgoodwin@gmail.com'
         EMAIL_USE_TLS = True
     except Exception as e:
         EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
