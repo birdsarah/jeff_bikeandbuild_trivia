@@ -76,19 +76,18 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.6/howto/static-files/
+# Allow all host headers
+ALLOWED_HOSTS = ['*']
 
-STATIC_URL = '/media/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'public/media/static')
+# Static asset configuration
+STATIC_ROOT = 'staticfiles'
+STATIC_URL = '/static/'
 
-MEDIA_URL = '/media/uploads/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'public/media/uploads')
-
-# Additional places to find static
 STATICFILES_DIRS = (
-    'static',
+    os.path.join(BASE_DIR, 'static'),
 )
 
 # Additional places to find template:
