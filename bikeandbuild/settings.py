@@ -4,7 +4,6 @@ import dj_database_url
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 DEBUG = os.environ['DEBUG']
-
 TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = ['jeff.bonvaya.com']
@@ -157,4 +156,5 @@ else:
         SERVER_EMAIL = 'sarah@bonvaya.com'
         EMAIL_USE_TLS = True
     except Exception as e:
+        print e
         EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
