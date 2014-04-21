@@ -50,6 +50,7 @@ INSTALLED_APPS = (
     'south',
 
     # Apps
+    'bikeandbuild',
     'trivia',
     'pages',
 )
@@ -63,7 +64,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'urls'
+ROOT_URLCONF = 'bikeandbuild.urls'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
