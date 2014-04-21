@@ -114,8 +114,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'trivia.context_processors.debug',
 )
 
-
-
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -141,6 +139,10 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': True,
         },
+        'testlogger': {
+            'handlers': ['console'],
+            'level': 'INFO',
+        },
     }
 }
 
@@ -156,5 +158,7 @@ else:
         SERVER_EMAIL = 'sarah@bonvaya.com'
         EMAIL_USE_TLS = True
     except Exception as e:
-        print e
+        import logging
+        logger = logging.getLogger('testlogger')
+        logger.info(e)
         EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
