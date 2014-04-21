@@ -17,6 +17,8 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+DATABASES = {}
+
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 if 'DATABASE_URL' in os.environ:
