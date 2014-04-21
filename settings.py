@@ -19,16 +19,19 @@ MANAGERS = ADMINS
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': private_settings.DATABASE_NAME,
-        'USER': private_settings.DATABASE_USER,
-        'PASSWORD': private_settings.DATABASE_PASSWORD,
-        'HOST': private_settings.DATABASE_HOST,
-        'PORT': '',
+if os.environ.has_key('DATABASE_URL'):
+    DATABASES['default'] =  dj_database_url.config()
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': private_settings.DATABASE_NAME,
+            'USER': private_settings.DATABASE_USER,
+            'PASSWORD': private_settings.DATABASE_PASSWORD,
+            'HOST': private_settings.DATABASE_HOST,
+            'PORT': '',
+        }
     }
-}
 
 SECRET_KEY = private_settings.SECRET_KEY
 

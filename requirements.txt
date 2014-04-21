@@ -3,3 +3,5 @@ django
 south
 Pillow
 markdown
+# Heroku
+django-toolbelt
