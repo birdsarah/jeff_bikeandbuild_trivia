@@ -1,5 +1,4 @@
 import os
-import logging
 import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -99,7 +98,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/uploads')
 
 # Additional places to find template:
 TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, "bikeandbuild/templates"),
+    os.path.join(BASE_DIR, "templates"),
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
