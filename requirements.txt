@@ -5,3 +5,4 @@ Pillow
 markdown
 # Heroku
 django-toolbelt
+dj-database-url
