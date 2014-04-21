@@ -9,8 +9,6 @@ else:
     DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
-ALLOWED_HOSTS = ['jeff.bonvaya.com']
-
 ADMINS = (
     ('Sarah Bird', 'sarah@bonvaya.com'),
     ('Jeffrey Goodwin', 'jeffreyhgoodwin@gmail.com'),
@@ -85,7 +83,7 @@ USE_TZ = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Allow all host headers
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['immense-wildwood-2394.herokuapp.com']
 
 # Static asset configuration
 STATIC_ROOT = 'staticfiles'
