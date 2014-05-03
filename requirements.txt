@@ -6,3 +6,6 @@ markdown
 # Heroku
 django-toolbelt
 dj-database-url
+# Static Files
+django-storages
+boto

@@ -48,6 +48,8 @@ INSTALLED_APPS = (
 
     # Tools
     'south',
+    'storages',
+    'boto',
 
     # Apps
     'bikeandbuild',
@@ -160,3 +162,12 @@ else:
         EMAIL_USE_TLS = True
     except Exception as e:
         EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+#Storage on S3 settings are stored as os.environs to keep settings.py clean
+if DEBUG is False:
+    AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+    AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+    AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
+    STATIC_URL = S3_URL
