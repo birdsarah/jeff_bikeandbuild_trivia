@@ -16,6 +16,7 @@ class Trivia(models.Model):
     overview = models.TextField()
     insider = models.TextField(verbose_name='Insider Knowledge')
     details = models.TextField()
+    prize = models.TextField()
     image = models.ImageField(upload_to='trivia', null=True, blank=True)
 
     def __unicode__(self):
