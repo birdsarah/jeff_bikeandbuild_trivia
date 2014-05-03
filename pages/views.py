@@ -12,7 +12,7 @@ class StaticView(TemplateView):
         if not self.doc_file:
             raise ImproperlyConfigured
         return path.abspath(
-            path.join(settings.BASE_DIR, 'bikeandbuild', 'pages', self.doc_file))
+            path.join(settings.BASE_DIR, 'pages', self.doc_file))
 
     def render_markdown(self, mdfile):
         with open(mdfile, 'r') as f:
