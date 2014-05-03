@@ -3,3 +3,4 @@ __pycache__/
 private_settings.py
 .sass-cache
 .ropeproject
+.env
