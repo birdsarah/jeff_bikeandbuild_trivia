@@ -1,6 +1,6 @@
 <p>A special thanks to the awesome companies that contributed all the great prizes. </p>
 
-####Ben &amp; Jerry&rsquo;s  
+<a href="http://www.benandjerrys.com"><B>Ben &amp; Jerry&rsquo;s</b></a>   
 Purveyors of pure dairy bliss. Not only do they have the best flavor names, they have the best flavors. Cherry Garcia, Heath Bar Crunch, Half Baked &ndash; it doesn&rsquo;t get any better than this, folks. Plus, they&rsquo;re from VT, so you know it&rsquo;s good.
 
 ####Sunskis 
