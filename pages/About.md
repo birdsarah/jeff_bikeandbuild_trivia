@@ -34,13 +34,13 @@ leaner organization.  Your donations are in great hands.
 
 ####Who is Jeff Goodwin?
 You've gotten this far and we haven't met?
-That's wonderful news.  I hope we meet in the near future, and until then,
+Well, I hope we meet in the near future, and until then,
 thanks for supporting my fundraising efforts.  You can learn more about me and
 why I've decided to join this adventure <a href="http://bikeandbuild.org/rider/7212">here</a>.
 
 ####I want to donate but all this guessing makes me uncomfortable.
-Not a problem.  You can still donate to my fundraising efforts directly through
-Bike & Build's website, or by snail mailing in a check to: 
+Not a problem.  You can still donate to my fundraising efforts directly on
+<a href="http://www.bikeandbuild.org/cms/component/option,com_wrapper/Itemid,118/?item_name_1=7212">Bike &amp; Build&rsquo;s website</a>, or by snail mailing in a check to: 
 
     Bike & Build 6153
     Ridge Ave Philadelphia,
@@ -49,5 +49,5 @@ Bike & Build's website, or by snail mailing in a check to:
 ####Fine print: 
 This isn&rsquo;t gambling. This isn&rsquo;t betting. If you&rsquo;re looking to make money or win big, this isn&rsquo;t for you. In fact, if you&rsquo;re reading the fine print, this might not be for you.
 
-If there's a tie, the prize will be offered to the most generous donor (whoever donated the most to Jeff&rsquo;s Bike  &amp; Build account)
+If there's a tie, the prize will be offered to the most generous donor (whoever donated the most to Jeff&rsquo;s Bike  &amp; Build account).
 
