@@ -27,7 +27,7 @@ class Guess(models.Model):
     value = models.FloatField()
     trivia = models.ForeignKey(Trivia)
     user = models.ForeignKey(Player)
-    placed = models.BooleanField(default=False)
+    placed = models.BooleanField(default=False, verbose_name='Paid')
     date_placed = models.DateTimeField(editable=False, null=True, blank=True)
 
     class Meta:
