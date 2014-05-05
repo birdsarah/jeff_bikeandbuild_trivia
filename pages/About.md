@@ -46,5 +46,8 @@ Bike & Build's website, or by snail mailing in a check to:
     Ridge Ave Philadelphia,
     PA 19128
 
+####Fine print: 
+This isn&rsquo;t gambling. This isn&rsquo;t betting. If you&rsquo;re looking to make money or win big, this isn&rsquo;t for you. In fact, if you&rsquo;re reading the fine print, this might not be for you.
 
+If there's a tie, the prize will be offered to the most generous donor (whoever donated the most to Jeff&rsquo;s Bike  &amp; Build account)
 
