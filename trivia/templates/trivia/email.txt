@@ -1,13 +1,15 @@
 Dear {{ name }},
 
-Thank you for supporting me on my trip.
+Thanks so much for your support. You're donation will allow Bike & Build to donate more than half a million dollars to affordable housing organizations throughout the U.S.
+
 You made the following guesses:
 {% for guess in guesses %}
 {{ guess.trivia.title }} - {{ guess.value }}
 {% endfor %}
-If you haven't already done it, please go to http://www.bikeandbuild.org/cms/component/option,com_wrapper/Itemid,118/?item_name_1=7212 
-and make a donation of ${{ suggested_donation|default:"xxx" }}.
 
-Any problems, concerns, whatever. Email me on jeffreyhgoodwin@gmail.com
+If you haven't already done so already, please go to http://www.bikeandbuild.org/cms/component/option,com_wrapper/Itemid,118/?item_name_1=7212"
+my donation page and make the recommended donation of ${{ suggested_donation|default:"xxx" }}. Remember, you can't participate in the Trivia Challenge if you don't donate!
+
+Don't hesitate to get in touch with any problems or concerns
 
 - Jeff
