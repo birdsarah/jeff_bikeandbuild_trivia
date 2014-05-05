@@ -49,7 +49,7 @@
         </dl>
         <p class="question">{{trivia.trivia}} ({{ trivia.unit }})</p>
         <div class="input-group pull-right">
-            <input name="trivia-{{ trivia.id }}" value="{{ trivia|get_guess:request.session }}" type="number" class="form-control" pattern="[0-9]+([,\.][0-9]+)?" title="Please enter a number of {{ trivia.unit }}" placeholder="Enter a number of {{ trivia.unit }}.">
+            <input name="trivia-{{ trivia.id }}" value="{{ trivia|get_guess:request.session }}" type="number" class="form-control" pattern="[0-9]+([,\.][0-9]+)?" title="Please enter a number of {{ trivia.unit }}" placeholder="Enter a {{ trivia.unit }}.">
             <span class="input-group-btn">
                 <button type="submit" class="btn btn-success">Save</button>
             </span>
