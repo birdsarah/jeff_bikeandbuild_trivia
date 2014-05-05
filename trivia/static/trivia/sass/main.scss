@@ -16,6 +16,9 @@ body, .navbar {
     padding: 0;
 }
 
+.navbar-collapse.in {
+    margin-top: 4em;
+}
 .navbar-nav.navbar-right:last-child {
     margin-right: 0;
 }
