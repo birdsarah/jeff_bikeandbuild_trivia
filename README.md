@@ -1,22 +1,16 @@
 Jeff's bike and build site
 
-To deploy to dreamhost:
- * login
- * go to bikeandbuild dir
- * git pull
- * source the ve
- * ./manage.py syncdb --migrate
- * ./manage.py collectstatic
- * cd ..
- * touch tmp/restart.txt
+To deploy to heroku:
+ * git push heroku master
 
-DO NOT FORGET THE RESTART!!
+To run locally:
+ * foreman start
 
 
 To setup:
  * virtualenv
  * pip install -r requirements.txt
  * gem install bootstrap-sass
- * add private-settings.py
+ * add .env
  * setup db
 

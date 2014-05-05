@@ -16,6 +16,7 @@ class Trivia(models.Model):
     overview = models.TextField()
     insider = models.TextField(verbose_name='Insider Knowledge')
     details = models.TextField()
+    prize = models.TextField()
     image = models.ImageField(upload_to='trivia', null=True, blank=True)
 
     def __unicode__(self):
@@ -26,7 +27,7 @@ class Guess(models.Model):
     value = models.FloatField()
     trivia = models.ForeignKey(Trivia)
     user = models.ForeignKey(Player)
-    placed = models.BooleanField(default=False)
+    placed = models.BooleanField(default=False, verbose_name='Paid')
     date_placed = models.DateTimeField(editable=False, null=True, blank=True)
 
     class Meta:

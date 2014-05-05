@@ -11,13 +11,12 @@
 <div class="row">
     <div class="col-md-12">
         <p>To make a long story short, Jeff Goodwin is about to bike across the country 
-        this summer with an awesome organization called Bike & Build. 
-        Bike & Build trips are dedicated to raising money and awareness 
-        for afford able housing, a cause Jeff cares deeply about. 
-        Jeff will be raising money as part of this process to support 
+        this summer.  The trip will be with Bike & Build, an awesome organization dedicated to raising money and awareness 
+        for affordable housing. 
+        Along with all of this fellow riders, Jeff will be raising money as part of this process to support 
         affordable housing organizations around the US. 
-        This trivia challenge is a way to contribute t
-        o a great cause and have some fun in the process.</p>
+        This trivia challenge is a way to contribute to 
+        a great cause and have some fun in the process.</p>
         <h4>How it works:</h4> 
         <ul>
             <li>Read through the trivia questions below</li>
@@ -25,7 +24,8 @@
             <li>Guess some more, it&rsquo;s a great cause afterall</li>
             <li>Submit your guesses and make the approapriate donation directly on Bike &amp; Build&rsquo;s website</li>
             <li>If your guess is the closest you&rsquo;ll be rewarded with a sweet thank you gift</li>
-        </ul>    
+        </ul>  
+        </br>
     </div>
 </div>
 
@@ -45,10 +45,11 @@
             <dt>Overview</dt><dd>{{trivia.overview}}</dd>
             <dt>Insider Knowledge</dt><dd>{{trivia.insider}}</dd>
             <dt>Details</dt><dd>{{trivia.details}}</dd>
+            <dt>Prize</dt><dd>{{trivia.prize}}</dd>
         </dl>
         <p class="question">{{trivia.trivia}} ({{ trivia.unit }})</p>
         <div class="input-group pull-right">
-            <input name="trivia-{{ trivia.id }}" value="{{ trivia|get_guess:request.session }}" type="number" class="form-control" pattern="[0-9]+([,\.][0-9]+)?" title="Please enter a number of {{ trivia.unit }}" placeholder="Enter a number of {{ trivia.unit }}.">
+            <input name="trivia-{{ trivia.id }}" value="{{ trivia|get_guess:request.session }}" type="number" class="form-control" pattern="[0-9]+([,\.][0-9]+)?" title="Please enter a number of {{ trivia.unit }}" placeholder="Enter a {{ trivia.unit }}.">
             <span class="input-group-btn">
                 <button type="submit" class="btn btn-success">Save</button>
             </span>

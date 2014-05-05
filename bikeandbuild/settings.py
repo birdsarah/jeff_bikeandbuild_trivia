@@ -1,14 +1,13 @@
 import os
-import logging
-import private_settings
+import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-DEBUG = private_settings.DEBUG
-
+if 'DEBUG' in os.environ:
+    DEBUG = os.environ['DEBUG']
+else:
+    DEBUG = False
 TEMPLATE_DEBUG = DEBUG
-
-ALLOWED_HOSTS = ['jeff.bonvaya.com']
 
 ADMINS = (
     ('Sarah Bird', 'sarah@bonvaya.com'),
@@ -17,20 +16,25 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+DATABASES = {}
+
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': private_settings.DATABASE_NAME,
-        'USER': private_settings.DATABASE_USER,
-        'PASSWORD': private_settings.DATABASE_PASSWORD,
-        'HOST': private_settings.DATABASE_HOST,
-        'PORT': '',
+if 'DATABASE_URL' in os.environ:
+    DATABASES['default'] = dj_database_url.config()
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': os.environ['DATABASE_NAME'],
+            'USER': os.environ['DATABASE_USER'],
+            'PASSWORD': os.environ['DATABASE_PASSWORD'],
+            'HOST': os.environ['DATABASE_HOST'],
+            'PORT': '',
+        }
     }
-}
 
-SECRET_KEY = private_settings.SECRET_KEY
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # Application definition
 
@@ -44,8 +48,11 @@ INSTALLED_APPS = (
 
     # Tools
     'south',
+    'storages',
+    'boto',
 
     # Apps
+    'bikeandbuild',
     'trivia',
     'pages',
 )
@@ -59,7 +66,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'urls'
+ROOT_URLCONF = 'bikeandbuild.urls'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
@@ -74,24 +81,28 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.6/howto/static-files/
+# Allow all host headers
+ALLOWED_HOSTS = ['immense-wildwood-2394.herokuapp.com',
+                 'www.jhgoodwin.com']
 
-STATIC_URL = '/media/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'public/media/static')
+# Static asset configuration
+STATIC_ROOT = 'staticfiles'
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
 MEDIA_URL = '/media/uploads/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'public/media/uploads')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/uploads')
 
-# Additional places to find static
-STATICFILES_DIRS = (
-    'static',
-)
 
 # Additional places to find template:
 TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, "bikeandbuild/templates"),
+    os.path.join(BASE_DIR, "templates"),
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -106,8 +117,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     # Custom
     'trivia.context_processors.debug',
 )
-
-
 
 LOGGING = {
     'version': 1,
@@ -134,27 +143,34 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': True,
         },
+        'testlogger': {
+            'handlers': ['console'],
+            'level': 'INFO',
+        },
     }
 }
 
-# configure logging
-logging.basicConfig(
-    level = logging.DEBUG,
-    format = '%(asctime)s %(levelname)s %(message)s',
-    filename = os.path.join(BASE_DIR, 'logs/app.log'),
-    filemode = 'a'
-)
-
-if DEBUG:
+if DEBUG is True:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 else:
     try:
         EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
         EMAIL_HOST = 'smtp.sendgrid.net'
-        EMAIL_HOST_PASSWORD = private_settings.SENDGRID_PASSWORD
-        EMAIL_HOST_USER = private_settings.SENDGRID_USERNAME
+        EMAIL_HOST_PASSWORD = os.environ['SENDGRID_PASSWORD']
+        EMAIL_HOST_USER = os.environ['SENDGRID_USERNAME']
         EMAIL_PORT = 587
-        SERVER_EMAIL = 'sarah@bonvaya.com'
+        SERVER_EMAIL = 'jeffreyhgoodwin@gmail.com'
         EMAIL_USE_TLS = True
     except Exception as e:
         EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+#Storage on S3 settings are stored as os.environs to keep settings.py clean
+if DEBUG is False:
+    AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+    AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY']
+    AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
+    STATIC_URL = S3_URL
+    MEDIA_URL = '%smedia/uploads/' % S3_URL
