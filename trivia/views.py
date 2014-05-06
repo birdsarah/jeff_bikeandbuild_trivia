@@ -21,9 +21,12 @@ class TriviaList(ListView):
             if value:
                 request.session[key] = value
         number_of_guesses = len(request.session.items())
-        messages.add_message(request,
-                             messages.SUCCESS,
-                             str(number_of_guesses) + ' guesses saved')
+        message = str(number_of_guesses) + " guesses saved. (Wrong number of guesses saved? See <a href='/p/quirks'>quirks</a>.)"
+        if number_of_guesses == 0:
+            status = messages.WARNING
+        else:
+            status = messages.SUCCESS
+        messages.add_message(request, status, message)
         return super(TriviaList, self).get(request, *args, **kwargs)
 
     def get_context_data(self):

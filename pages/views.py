@@ -32,3 +32,7 @@ class AboutView(StaticView):
 
 class SponsorsView(StaticView):
     doc_file = 'Sponsors.md'
+
+
+class QuirksView(StaticView):
+    doc_file = 'Quirks.md'
