@@ -24,7 +24,7 @@ class Trivia(models.Model):
 
 
 class Guess(models.Model):
-    value = models.FloatField()
+    value = models.TextField()
     trivia = models.ForeignKey(Trivia)
     user = models.ForeignKey(Player)
     placed = models.BooleanField(default=False, verbose_name='Paid')
