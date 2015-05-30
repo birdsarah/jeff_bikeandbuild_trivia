@@ -13,8 +13,7 @@ Bike & Build.</a>
 
 
 ####Why Bike & Build?
-If I'm going to bike across the country I want
-to do it for a good cause, and I can't think of a better one than affordable
+If I'm going to bike 1,000 miles I want to do it for a good cause, and I can't think of a better one than affordable
 housing.   It's an issue I care deeply about and one that I've spent the
 entirety of my career working towards.  After hearing wonderful things from
 friends who have been on previous Bike & Build trips it was an easy choice.   
