@@ -1,22 +1,17 @@
 ####What's all this for, anyway?
-This summer I'll be joining a Bike &
-Build trip and peddling from Maine to California.  Bike & Build is a non-profit
-organization that raises money and awareness for affordable housing through
-biking trips.  In addition to fundraising, we'll be giving community
-presentations and volunteering on affordable housing developments along the
-way.
+This summer Jeff Goodwin will be helping to lead a Bike & Build trip.  Along with 33 other young adults, he’ll be peddling 1000 miles from Portland, OR to Bellingham WA. Bike & Build is a non-profit organization that raises money and awareness for affordable housing through biking trips. In addition to fundraising, Bike & Build trips stop to volunteer with affordable housing orgs along the way.
 
- * <a href=http://www.bikeandbuild.org/cms/content/view/118/278/>Check out our
+ * <a href=http://www.driftwest.org/>Check out our
 route. </a>
  * <a href=http://www.bikeandbuild.org/cms/content/view/32/49/>Learn more about
 Bike & Build.</a> 
 
 
 ####Why Bike & Build?
-If I'm going to bike 1,000 miles I want to do it for a good cause, and I can't think of a better one than affordable
-housing.   It's an issue I care deeply about and one that I've spent the
-entirety of my career working towards.  After hearing wonderful things from
-friends who have been on previous Bike & Build trips it was an easy choice.   
+Bike & Build is a small but mighty organization.  They have a profound impact on participants, communities along the route, and partner affordable housing organizations.  
+Affordable housing is an important - and largely hidden - issue that demands our attention.  Bike & Build provides an opportunity to raise funds and awareness for this cause in a meaningful way, engaging young adults in the process. 
+To date, Bike & Build has donated more than $5.1M; built for more than 185,000 hours; pedaled over 8.5M miles; and engaged more than 2250 young adults.
+
 
 
 ####What happens to the donations?
@@ -31,15 +26,10 @@ impressive one.</a>   Thanks to on the road donations and free accommodations
 After looking behind the scenes I think you would be hard pressed to find a
 leaner organization.  Your donations are in great hands. 
 
-####Who is Jeff Goodwin?
-You've gotten this far and we haven't met?
-Well, I hope we meet in the near future, and until then,
-thanks for supporting my fundraising efforts.  You can learn more about me and
-why I've decided to join this adventure <a href="http://bikeandbuild.org/rider/7212">here</a>.
 
 ####I want to donate but all this guessing makes me uncomfortable.
 Not a problem.  You can still donate to my fundraising efforts directly on
-<a href="http://www.bikeandbuild.org/cms/component/option,com_wrapper/Itemid,118/?item_name_1=7212">Bike &amp; Build&rsquo;s website</a>, or by snail mailing in a check to: 
+<a href="http://bikeandbuild.org/rider/7760">Bike &amp; Build&rsquo;s website</a>, or by snail mailing in a check to: 
 
     Bike & Build 6153
     Ridge Ave Philadelphia,
