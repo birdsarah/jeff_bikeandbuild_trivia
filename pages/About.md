@@ -1,5 +1,5 @@
 ####What's all this for, anyway?
-This summer Jeff Goodwin will be helping to lead a Bike & Build trip.  Along with 33 other young adults, he’ll be peddling 1000 miles from Portland, OR to Bellingham WA. Bike & Build is a non-profit organization that raises money and awareness for affordable housing through biking trips. In addition to fundraising, Bike & Build trips stop to volunteer with affordable housing orgs along the way.
+This summer Jeff Goodwin will be helping to lead a Bike & Build trip.  Along with 33 other young adults, he'll be peddling 1000 miles from Portland, OR to Bellingham WA. Bike & Build is a non-profit organization that raises money and awareness for affordable housing through biking trips. In addition to fundraising, Bike & Build trips stop to volunteer with affordable housing orgs along the way.
 
  * <a href=http://www.driftwest.org/>Check out our
 route. </a>
