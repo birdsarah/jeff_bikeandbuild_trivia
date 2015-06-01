@@ -20,7 +20,7 @@ nearly half a million dollars to affordable housing organizations across the
 U.S. this year thanks to generous donations from folks like you.  Bike & Build
 does use a small percentage of the contributions to keep the lights on and the
 organization running.  If you're into reading 990's, <a
-href=http://www.bikeandbuild.org/cms/content/view/9184/368/> they've got an
+href="http://www.bikeandbuild.org/cms/content/view/9184/368/"> they've got an
 impressive one.</a>   Thanks to on the road donations and free accommodations
 (mostly churches and community centers) trip costs are kept to a bare minimum.
 After looking behind the scenes I think you would be hard pressed to find a
