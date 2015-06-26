@@ -53,7 +53,7 @@ class TriviaCheckout(ListView, FormView):
     model = Trivia
     template_name = 'trivia/trivia_checkout.html'
     form_class = TriviaCheckoutForm
-    success_url = 'http://www.bikeandbuild.org/cms/component/option,com_wrapper/Itemid,118/?item_name_1=7212'  # nopep8
+    success_url = 'http://www.bikeandbuild.org/cms/component/option,com_wrapper/Itemid,118/?item_name_1=7760'  # nopep8
 
     def dispatch(self, request, *args, **kwargs):
         # Needed if form is invalid
