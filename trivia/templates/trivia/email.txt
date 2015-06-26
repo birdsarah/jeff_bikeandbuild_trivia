@@ -7,7 +7,7 @@ You made the following guesses:
 {{ guess.trivia.title }} - {{ guess.value }}
 {% endfor %}
 
-If you haven't already done so already, please go to http://www.bikeandbuild.org/cms/component/option,com_wrapper/Itemid,118/?item_name_1=7212"
+If you haven't already done so already, please go to http://www.bikeandbuild.org/cms/component/option,com_wrapper/Itemid,118/?item_name_1=7760"
 my donation page and make the recommended donation of ${{ suggested_donation|default:"xxx" }}. Remember, you can't participate in the Trivia Challenge if you don't donate!
 
 Don't hesitate to get in touch with any problems or concerns
